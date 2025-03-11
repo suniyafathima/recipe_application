@@ -1,0 +1,2 @@
+C:/Users/suniy/Documents/Dart/recipe_application/android/app/.cxx/Debug/666xv3g6/x86/CMakeFiles/edit_cache.dir
+C:/Users/suniy/Documents/Dart/recipe_application/android/app/.cxx/Debug/666xv3g6/x86/CMakeFiles/rebuild_cache.dir

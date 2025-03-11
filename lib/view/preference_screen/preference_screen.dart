@@ -3,7 +3,7 @@ import 'package:recipe_application/global_widget/reusable_button.dart';
 import 'package:recipe_application/global_widget/reusable_container.dart';
 import 'package:recipe_application/utils/constants/color_constants.dart';
 import 'package:recipe_application/view/bottom_navbar/bottom_navbar.dart';
-import 'package:recipe_application/view/home_screen/home_screen.dart';
+
 
 class PreferenceScreen extends StatelessWidget {
   const PreferenceScreen({super.key});

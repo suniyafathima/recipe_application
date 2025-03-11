@@ -1,0 +1,2 @@
+C:/Users/suniy/Documents/Dart/recipe_application/android/app/.cxx/Debug/d3k433xq/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/suniy/Documents/Dart/recipe_application/android/app/.cxx/Debug/d3k433xq/armeabi-v7a/CMakeFiles/rebuild_cache.dir
