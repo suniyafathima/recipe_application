@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_application/global_widget/reusable_button.dart';
 import 'package:recipe_application/utils/constants/color_constants.dart';
+import 'package:recipe_application/view/bottom_navbar/bottom_navbar.dart';
+import 'package:recipe_application/view/home_screen/home_screen.dart';
 
 class RecipeDetails extends StatefulWidget {
-  
   const RecipeDetails({super.key});
 
   @override
@@ -10,7 +12,8 @@ class RecipeDetails extends StatefulWidget {
 }
 
 class _RecipeDetailsState extends State<RecipeDetails> {
-  List ingredients=[
+bool clickedStar=false;
+ static List ingredients=[
 "440g pkt shelf-fresh hokkien noodles",
 "1 tbsp peanut oil",
 "500g Coles Australian RSPCA Approved Chicken Mince",
@@ -32,9 +35,11 @@ class _RecipeDetailsState extends State<RecipeDetails> {
     return Scaffold(
       appBar:AppBar(
          leadingWidth: 100,
-       leading: GestureDetector(onTap: () {
-         Navigator.pop(context);
-       },
+       leading: InkWell(
+            onTap: () {
+              Navigator.push(context, 
+              MaterialPageRoute(builder: (index)=>BottomNavbar()));
+            },
          child: Row(
           children: [
            SizedBox(width: 20,), 
@@ -148,8 +153,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                       ),
                   ),
                   greyLine()
-                ],
-              ),
+                ],        ),
             ),
           ),
           TextButton(onPressed: (){}, 
@@ -214,6 +218,7 @@ class _RecipeDetailsState extends State<RecipeDetails> {
               greyLine(),
             SizedBox(height: 20,),
             //for add reviews
+            
             Row(
               children: [
                 Text("Reviews(1)",
@@ -241,14 +246,57 @@ class _RecipeDetailsState extends State<RecipeDetails> {
                 Text("5",style: TextStyle(fontSize:20 ))      
                ],
              ),
-              TextButton(onPressed: (){
-                //
-              }, 
-              child:Text("Add a review",
-              style: TextStyle(
-                color: ColorConstants.darkblue,
-                fontSize:20,
-                fontWeight: FontWeight.bold ),)),      
+              SizedBox(height: 20,),
+              Container(
+                height: 400,
+                width: double.infinity,
+                decoration: BoxDecoration(color: ColorConstants.lightGrey1),
+                
+                child: TextButton(onPressed: (){
+                  //
+                }, 
+                child:Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Select a rating", style: TextStyle(
+                      color: ColorConstants.darkblue,
+                      fontSize:20,),),
+                      SizedBox(height: 20,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children:
+                         List.generate(5, (index){
+                                return Icon(Icons.star_border_outlined,
+                                color:Colors.amber,size: 50,
+                                );
+                              })
+                      
+                    ),
+                    SizedBox(height: 20,),
+                    TextField(
+                      maxLines: 4,
+                      maxLength: 500,
+                      decoration: InputDecoration(
+                        hintText: "Add a review...",
+                        hintStyle: TextStyle(color: ColorConstants.grey),
+                        fillColor: ColorConstants.lightblue,
+                        filled: true,
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: ColorConstants.grey)
+                        ),
+                          focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: ColorConstants.grey)
+                        )
+                      ),
+                    ),
+                    SizedBox(height: 10,),
+                    ReusableButton(buttonPressed:(){}, 
+                    textname: "Add a review",
+                    backgroundColor:ColorConstants.darkblue ),
+                    
+                  ],
+                )),
+              ),      
              ]) ]),
       )));
   }

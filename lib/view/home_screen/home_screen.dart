@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:recipe_application/model/home_screen_models/recipeitem_model.dart';
+import 'package:recipe_application/search_results/tabs/collection_tab.dart';
 import 'package:recipe_application/utils/constants/color_constants.dart';
+import 'package:recipe_application/view/recipe_details/recipe_details.dart';
 import 'package:recipe_application/view/tastebud_screen/tastebud_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -51,6 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
       extendBody: true,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+       
         backgroundColor: Colors.transparent,
         centerTitle: true,
         title: Row(
@@ -81,8 +84,10 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [Icon(Icons.account_circle)],
       ),
       body: SingleChildScrollView(
+      
         child: Column(
           children: [
+           
           // Gradient container at the top half of the screen
             gradientContainerhalfscreen(screenHeight, screenWidth, context, texts),
             setRecipes(screenHeight),
@@ -387,34 +392,31 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-      
+               
+                  crossAxisAlignment: CrossAxisAlignment.start,  
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("What's cooking?", 
-                    style: TextStyle(
-                        color: ColorConstants.black,
-                        fontSize: 28,
-                        fontWeight: FontWeight.bold,
-                      ),),
-                  ),
-                 // SizedBox(height:5),
+                  Text("What's cooking?", 
+                  style: TextStyle(
+                      color: ColorConstants.black,
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                    ),),
+                  SizedBox(height:5),
                   GridView.builder(
+                    padding: EdgeInsets.zero,
                     shrinkWrap: true, 
                     itemCount: gitems.length,
                     gridDelegate:SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      childAspectRatio: 1.1,
                       crossAxisSpacing: 10,
-                      mainAxisSpacing: 30
+                     
                       ), 
                    
                     itemBuilder:(context,index)=>
                     Column(
                       children: [
                         Container(
-                           height:120,
+                          height:120,
                            //width: 200,
                            decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
@@ -428,7 +430,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         height:40,
                        // width: 200, //container width
                         child: Text(
-                          items[index].name,
+                          gitems[index].name,
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -551,12 +553,11 @@ class _HomeScreenState extends State<HomeScreen> {
           );
   }
 
-  PreferredSize greyLine() {
-    return PreferredSize(preferredSize: Size.fromHeight(-10), 
-     child:Container(
+  Container greyLine() {
+    return Container(
       color: ColorConstants.lightGrey1,
       height: 2.0,
-    ));
+    );
   }
 
   SingleChildScrollView horizontalListarecipes(List<dynamic> items) {
@@ -568,81 +569,81 @@ class _HomeScreenState extends State<HomeScreen> {
                    spacing: 20,
                    children:List.generate(
                     items.length, (index)=>
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      spacing: 14,
-                      children: [
-                        Stack(
-                          children: [
-                          Container(
-                            height: 100,
-                            width: 140,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              image: DecorationImage(
-                                image:AssetImage(items[index].imagePath),
-                                fit:BoxFit.cover 
-                                )
+                    InkWell(     //recipe details
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (index)=>RecipeDetails()));
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: 14,
+                        children: [
+                          Stack(
+                            children: [
+                            Container(
+                              height: 100,
+                              width: 140,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                  image:AssetImage(items[index].imagePath),
+                                  fit:BoxFit.cover 
+                                  )
+                              ),
                             ),
-                          ),
-                          Positioned(
-                            top: 10,
-                            right: 10,
-                            child: GestureDetector(
-                              onTap: () {
-                               setState(() {
-                                  items[index].isLiked = !items[index].isLiked;
-                                });
-                              },
-                              child: CircleAvatar(
-                                radius: 16,
-                                backgroundColor: ColorConstants.white,
-                                child: Icon(items[index].isLiked ? Icons.favorite : Icons.favorite_border_outlined,
-                                color: items[index].isLiked ? Colors.red : Colors.grey,
-                                size:16,
-                                ),
-                                ),
+                            Positioned(
+                              top: 10,
+                              right: 10,
+                              child: GestureDetector(
+                                onTap: () {
+                                 setState(() {
+                                    items[index].isLiked = !items[index].isLiked;
+                                  });
+                                },
+                                child: CircleAvatar(
+                                  radius: 16,
+                                  backgroundColor: ColorConstants.white,
+                                  child: Icon(items[index].isLiked ? Icons.favorite : Icons.favorite_border_outlined,
+                                  color: items[index].isLiked ? Colors.red : Colors.grey,
+                                  size:16,
+                                  ),
+                                  ),
+                              ),
+                            )
+                        ]),
+                        SizedBox(
+                          height: 40,
+                          width: 140,
+                          child: Text(
+                            items[index].name,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              ),
+                                 maxLines: 2,
+                                 overflow: TextOverflow.visible,
+                                 softWrap: true,
                             ),
-                          )
-                      ]),
-                      SizedBox(
-                        height: 40,
-                        width: 140,
-                        child: Text(
-                          items[index].name,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            ),
-                               maxLines: 2,
-                               overflow: TextOverflow.visible,
-                               softWrap: true,
-                          ),
-                      ),
-                       Row(
-                          children: 
-                            List.generate(5, (index){
-                              return Icon(
-                             index < items[index].rating.floor()?
-                             Icons.star
-                             :(index<items[index].rating) 
-                             ?Icons.star_half
-                             :Icons.star_border,
-                              color:Colors.amber,size: 16,
-                              );
-                            })
-                          ,
                         ),
-                       Row(
-                          children: [
-                           Icon(Icons.access_time_filled,size:16,color: ColorConstants.darkGrey,),
-                           SizedBox(width: 4),
-                           Text(
-                            items[index].time,
-                           style: TextStyle(color: ColorConstants.darkGrey),)
-                         
-                          ])
-                      ],
+                         Row(
+                            children: 
+                              List.generate(5, (index){
+                                return Icon(Icons.star,
+                                color:Colors.amber,size: 16,
+                                );
+                              })
+                            ,
+                          ),
+                         Row(
+                            children: [
+                             Icon(Icons.access_time_filled,size:16,color: ColorConstants.darkGrey,),
+                             SizedBox(width: 4),
+                             Text(
+                              items[index].time,
+                             style: TextStyle(color: ColorConstants.darkGrey),)
+                           
+                            ])
+                        ],
+                      ),
                     )),   
                 ),
               ),

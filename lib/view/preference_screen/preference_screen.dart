@@ -46,7 +46,7 @@ class PreferenceScreen extends StatelessWidget {
               SizedBox(height: 8),
               Align(
                 alignment: Alignment.centerLeft,
-                child: Text("You can select up to 5 ingredients.",
+                child: Text("You can select up to 3 preferences",
                 style: TextStyle(fontSize: 18,fontWeight: FontWeight.w300),)),
               SizedBox(height: 16),
             
@@ -81,8 +81,8 @@ class PreferenceScreen extends StatelessWidget {
                     textAlign: TextAlign.center
                     ),
                     actions: [
-                      ReusableButton(buttonPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (index)=>BottomNavbar()));
+                      ReusableButton(buttonPressed: (){//h..b
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (index)=>BottomNavbar()));
                       }, 
                       textname: "Let's go!",
                       backgroundColor: ColorConstants.darkblue,

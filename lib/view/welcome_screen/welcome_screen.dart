@@ -12,9 +12,9 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset:false,
-      backgroundColor: ColorConstants.lightyellow,
+      backgroundColor: ColorConstants.lightblue,
       appBar: AppBar(
-        backgroundColor:ColorConstants.lightyellow,
+        backgroundColor:ColorConstants.lightblue,
       centerTitle: true,
        title: Row(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -36,7 +36,7 @@ class WelcomeScreen extends StatelessWidget {
       actions: [
         TextButton(onPressed: (){},
           style: TextButton.styleFrom(
-            foregroundColor: ColorConstants.lightyellow), 
+            foregroundColor: ColorConstants.lightblue), 
           child: Text("skip",
         style: TextStyle(
           fontSize: 20,
