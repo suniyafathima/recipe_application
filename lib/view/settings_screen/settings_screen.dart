@@ -23,7 +23,7 @@ class SettingsScreen extends StatelessWidget {
       body: ListView(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         children: [
-          //ACCOUNT SECTION
+          //account section
           SectionHeader(title: "ACCOUNT"),
           SettingsTile(title: "Preferences",onTap: () {
             Navigator.pushReplacement(context, MaterialPageRoute(builder: (index)=>TypeScreen()));
@@ -34,7 +34,7 @@ class SettingsScreen extends StatelessWidget {
           Divider(),
          
 
-          //ABOUT SECTION
+          //about section
           SectionHeader(title: "ABOUT"),
           SettingsTile(title: "Frequently asked questions", isExternal: true),
           Divider(),
@@ -48,7 +48,7 @@ class SettingsScreen extends StatelessWidget {
           SettingsTile(title: "Version", trailingText: "3.1.2"),
           Divider(),
 
-        //LOGIN
+        //login
 
           SizedBox(height: 20),
           ReusableButton(buttonPressed: (){
@@ -62,7 +62,7 @@ class SettingsScreen extends StatelessWidget {
   }
 }
 
-//SECTION HEADER WIDGET
+//section header widget
 class SectionHeader extends StatelessWidget {
   final String title;
   const SectionHeader({super.key, required this.title});
@@ -79,7 +79,7 @@ class SectionHeader extends StatelessWidget {
   }
 }
 
-//SETTINGS TILE WIDGET
+//settings tile widget
 class SettingsTile extends StatelessWidget {
   final String title;
   final bool isExternal;
