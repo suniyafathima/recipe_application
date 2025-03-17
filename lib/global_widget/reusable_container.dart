@@ -17,7 +17,7 @@ class ReusableContainer extends StatelessWidget {
       decoration: BoxDecoration(
         color: ColorConstants.lightGrey,
         borderRadius: BorderRadius.circular(30),
-        border: Border.all(color: ColorConstants.grey),
+        border: Border.all(color: ColorConstants.lightGrey1),
         
       ),
       child: Row(

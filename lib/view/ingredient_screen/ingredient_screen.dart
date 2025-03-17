@@ -10,7 +10,9 @@ class IngredientScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:ColorConstants.lightblue,
       appBar: AppBar(
+        backgroundColor:ColorConstants.lightblue,
         leadingWidth: 100,
        leading:  GestureDetector(onTap: () {
          Navigator.pop(context);
@@ -37,7 +39,8 @@ class IngredientScreen extends StatelessWidget {
              Text("Which of these staple ingredients do you cook\nwith most often?",
                 style: TextStyle(
                   fontSize: 25, 
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.bold,
+                  ),
               ),
               SizedBox(height: 8),
               Align(

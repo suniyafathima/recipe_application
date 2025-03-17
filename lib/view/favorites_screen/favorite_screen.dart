@@ -19,6 +19,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
     Recipeitemmodel(imagePath: "assets/images/vegopesto.jpg", name: "Sego pesto pasta", rating: 1, time: "15m"),
     Recipeitemmodel(imagePath: "assets/images/butterchicken.jpg", name: "Butter chicken", rating: 4.9, time: "20m", isLiked: false)
   ];
+  bool showalert=true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,7 +52,109 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
             ),
           ),]
         ),
-        body: Padding(
+        body: items.isEmpty? 
+       Expanded(
+         child: Column(
+           children: [
+             // Conditional Alert
+             if (showalert)
+               Padding(
+                 padding: const EdgeInsets.all(12.0),
+                 child: Container(
+                   height: 230,
+                   width: double.infinity,
+                  padding: EdgeInsets.all(10),
+                   color: ColorConstants.lightGrey,
+                   child: Column(
+                     children: [
+                       Row(
+                         children: [
+                           Icon(Icons.warning_rounded, 
+                           color: ColorConstants.darkGrey),
+                           SizedBox(width: 10),
+                           Expanded(
+                             child: Text("Want to sync your saved recipes?",
+                             style: TextStyle(color: ColorConstants.black,
+                             fontWeight: FontWeight.bold,
+                             fontSize: 20),),
+                           ),
+                           IconButton(
+                             onPressed: () {
+                               setState(() {
+                                 showalert = false;
+                               });
+                             },
+                             icon: Icon(Icons.cancel, color: ColorConstants.darkGrey),
+                           ),
+                          
+                           
+                         ],
+                       ),
+                       Column(
+                        children: [
+                          SizedBox(
+                            height: 80,
+                            width: 280,
+                            child: Text("Create a free state account to save and sync your favourie recipes across all devices.",
+                            maxLines:3 ,style: TextStyle(fontSize: 20),
+                            overflow: TextOverflow.visible,),
+                          ),
+                          SizedBox(height: 16),
+                           TextButton(onPressed: (){}, child: Text("Sign up for a free account",
+                              style: TextStyle(color: ColorConstants.darkblue,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20),))
+                        ],
+                       )
+                     ],
+                   ),
+                  
+                 ),
+               ),
+             
+          
+            
+             SizedBox(height: 80),
+             
+           
+             Image.asset(
+               "assets/images/favourite.png",
+               width: 200,
+               height: 100,
+             ),
+             Text(
+               "No favourites yet",
+               style: TextStyle(
+                 fontSize: 20,
+                 fontWeight: FontWeight.bold,
+               ),
+             ),
+             Text("Save your first recipe by tapping a Like button"),
+             
+             SizedBox(height: 20), 
+             
+         
+             Container(
+               height: 50,
+               width: 180,
+               decoration: BoxDecoration(
+                 color: ColorConstants.darkblue,
+                 borderRadius: BorderRadius.circular(10),
+               ),
+               child: TextButton(
+                 onPressed: () {},
+                 child: Text(
+                   "Search Recipes",
+                   style: TextStyle(color: Colors.white,
+                   fontSize: 20 ),
+                 ),
+               ),
+             ),
+           ],
+         ),
+       )
+
+        :Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
@@ -128,12 +231,12 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                       SizedBox(height: 4),
                       Row(
                         children: List.generate(5, (starIndex) {
-                          return Icon(
-                            starIndex < items[index].rating.floor()
-                                ? Icons.star
-                                : (starIndex < items[index].rating)
-                                    ? Icons.star_half
-                                    : Icons.star_border,
+                          return Icon(Icons.star,
+                            // starIndex < items[index].rating.floor()
+                            //     ? Icons.star
+                            //     : (starIndex < items[index].rating)
+                            //         ? Icons.star_half
+                            //         : Icons.star_border,
                             color: Colors.amber,
                             size: 16,
                           );
@@ -182,4 +285,4 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   }
 }
 
-          
+  

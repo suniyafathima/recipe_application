@@ -11,7 +11,9 @@ class PreferenceScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:ColorConstants.lightblue,
        appBar: AppBar(
+        backgroundColor:ColorConstants.lightblue,
         leadingWidth: 100,
        leading:  GestureDetector(onTap: () {
          Navigator.pop(context);
@@ -68,7 +70,7 @@ class PreferenceScreen extends StatelessWidget {
               Spacer(),
               ReusableButton(
                 buttonPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (index)=>BottomNavbar()));
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (index)=>BottomNavbar()),(route)=>false);
                   showDialog(context: context, 
                   builder: (context)=>AlertDialog(
                     title: Text("Welcome to taste",
@@ -82,7 +84,7 @@ class PreferenceScreen extends StatelessWidget {
                     ),
                     actions: [
                       ReusableButton(buttonPressed: (){//h..b
-                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (index)=>BottomNavbar()));
+                        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (index)=>BottomNavbar()),(route)=>false);
                       }, 
                       textname: "Let's go!",
                       backgroundColor: ColorConstants.darkblue,

@@ -10,7 +10,9 @@ class TypeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:ColorConstants.lightblue,
        appBar: AppBar(
+        backgroundColor:ColorConstants.lightblue,
         leadingWidth: 100,
        leading:  GestureDetector(onTap: () {
          Navigator.pop(context);
@@ -47,16 +49,20 @@ class TypeScreen extends StatelessWidget {
                 style: TextStyle(fontSize: 18,fontWeight: FontWeight.w300),)),
               SizedBox(height: 16),
              Wrap(
-                spacing: 2,
-                runSpacing: 4,
+                spacing: 5,
+                runSpacing: 5,
                 children:[
                 ReusableContainer( ingName: "Healthy"),
                 ReusableContainer( ingName: "5 ingrediants"),
                 ReusableContainer( ingName: "Quick(under 30 mins)"),
-                ReusableContainer( ingName: "Breakfast"),
-                ReusableContainer( ingName: "Lunch"),
-                ReusableContainer( ingName: "Dinner"),
-                ReusableContainer( ingName: "Drink and cocktails"),
+                ReusableContainer( ingName: "Breakfasts"),
+                ReusableContainer( ingName: "Lunchs"),
+                ReusableContainer( ingName: "Dinners"),
+                ReusableContainer( ingName: "Drinks and cocktails"),
+                ReusableContainer( ingName: "Easy"),
+                ReusableContainer( ingName: "Air fryer"),
+                ReusableContainer( ingName: "Snacks"),
+                ReusableContainer( ingName: "Kid friendly"),
             ]),
         //SizedBox(height: 220),
         Spacer(),

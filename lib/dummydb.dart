@@ -1,4 +1,4 @@
-import 'package:recipe_application/model/ingredient_mode;/ingredient_model.dart';
+import 'package:recipe_application/model/ingredient_model/ingredient_model.dart';
 
 class Dummydb {
   static List<IngredientModel> ingredients=[

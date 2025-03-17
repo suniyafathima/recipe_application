@@ -4,17 +4,17 @@ import 'package:lottie/lottie.dart';
 import 'package:recipe_application/model/home_screen_models/recipeitem_model.dart';
 import 'package:recipe_application/utils/constants/color_constants.dart';
 import 'package:recipe_application/view/recipe_details/recipe_details.dart';
-import 'package:recipe_application/view/settings_screen/settings_screen.dart';
+
 import 'package:recipe_application/view/tastebud_screen/tastebud_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreen1 extends StatefulWidget {
+  const HomeScreen1({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreen1> createState() => _HomeScreen1State();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreen1State extends State<HomeScreen1> {
   //bool isLiked=false;
    List items=[
       Recipeitemmodel(imagePath: "assets/images/chickenzuccini.jpg", name: "Chicken zuccini",rating: 4.5, time: "25m",),
@@ -52,45 +52,76 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-       
+      backgroundColor: Colors.transparent,
+      body: CustomScrollView(
+      slivers: [
+        SliverAppBar(
+               
+        floating: true,
+         pinned: true,
         backgroundColor: Colors.transparent,
-        centerTitle: true,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "taste",
-              style: TextStyle(
-                color: ColorConstants.darkblue1,
-                fontSize: 35,
-                fontWeight: FontWeight.bold,
+          centerTitle: true,
+          flexibleSpace:FlexibleSpaceBar(
+            title:Container(
+            
+                   height: 40,
+                   width: double.infinity,
+            
+                  decoration: BoxDecoration(
+                     gradient: LinearGradient(
+                      colors: [Colors.blue, Colors.green, Colors.amber, Colors.pink],
+                     ),
+                     borderRadius: BorderRadius.circular(10),
+                  ),
+                
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 1,vertical: 1),
+                child: Container(
+                       decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                       ),
+                       child: Text("Try \"Suggestions for vegetarian meals\"",
+                         style: GoogleFonts.nunitoSans(
+                         textStyle: TextStyle(
+                         fontWeight: FontWeight.w400,
+                         color: ColorConstants.grey,
+                        fontSize: 18,
+                        overflow: TextOverflow.ellipsis
+                          ),
+                          
+                        ),
+                       ),
+                     ),
               ),
             ),
-            CircleAvatar(
-              radius: 10,
-              backgroundColor: ColorConstants.mintgreen,
-              child: Text(
-                ".COM",
-                style: TextStyle(
-                  fontSize: 7,
-                  fontWeight: FontWeight.bold,
-                  color: ColorConstants.white,
-                ),
-              ),
-            ),
-          ],
-        ),
-        actions: [InkWell(onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: (index)=>SettingsScreen()));
-        }, child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Icon(Icons.account_circle),
-        ))],
-      ),
-      body: SingleChildScrollView(
+            //      background:Container(
+            //        height: double.infinity,
+            // width: double.infinity,
+            // padding: EdgeInsets.all(1),
+            //       decoration: BoxDecoration(
+            //          gradient: LinearGradient(
+            //           colors: [Colors.blue, Colors.green, Colors.amber, Colors.pink],
+            //          ),
+            //          borderRadius: BorderRadius.circular(10),
+            //       ),
+            //      ) ,
+          ),
       
-        child: Column(
+        // actions: [
+        //   InkWell(onTap: () {
+        //   Navigator.push(context, MaterialPageRoute(builder: (index)=>SettingsScreen()));
+        // }, child: Padding(
+        //   padding: const EdgeInsets.all(10.0),
+        //   child: Icon(Icons.account_circle),
+        // ))],
+        
+         ),
+          
+      
+       SliverToBoxAdapter(
+    
+          child: Column(
           children: [
            
           // Gradient container at the top half of the screen
@@ -108,12 +139,17 @@ class _HomeScreenState extends State<HomeScreen> {
             setRecipesTwo(screenHeight),
              //SizedBox(height: 5,),
              horizantalListTwo()
-
+    
           //
-
+    
           
            ],),
-      ),
+    
+       )
+      ],
+        
+      
+      )
     );
   }
 
@@ -728,144 +764,171 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Container gradientContainerhalfscreen(double screenHeight, double screenWidth, BuildContext context, List<dynamic> texts) {
-    return Container(
-          height: screenHeight * 0.57, 
-          width: screenWidth,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0xffdeebf7),
-                Color(0xffffffff),
-                Color(0xfffed99b),
-              ],
-            ),
-            border: Border(
-              bottom: BorderSide(color: Colors.grey.shade400),
-            ),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              children: [
-                SizedBox(height: 90),
-                Lottie.asset(
-                  "assets/images/carrotj.json",
-                  height: 90,
-                  width: 90,
+    return 
+        Container(
+              height: screenHeight * 0.57, 
+              width: screenWidth,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color(0xffdeebf7),
+                    Color(0xffffffff),
+                    Color(0xfffed99b),
+                  ],
                 ),
-                SizedBox(height: 6),
-                Container(
-                  height: 20,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    color: ColorConstants.darkblue,
-                    borderRadius: BorderRadius.circular(2),
+                border: Border(
+                  bottom: BorderSide(color: Colors.grey.shade400),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                       Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "taste",
+                  style: TextStyle(
+                    color: ColorConstants.darkblue1,
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
                   ),
-                  child: Center(
-                    child: Text(
-                      "BETA",
-                      style: TextStyle(
-                        color: ColorConstants.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                      ),
+                ),
+                CircleAvatar(
+                  radius: 10,
+                  backgroundColor: ColorConstants.mintgreen,
+                  child: Text(
+                    ".COM",
+                    style: TextStyle(
+                      fontSize: 7,
+                      fontWeight: FontWeight.bold,
+                      color: ColorConstants.white,
                     ),
                   ),
                 ),
-                Text(
-                  "Hi! I'm TasteBud, your \nnew recipe finder",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(height: 10),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => TastebudScreen()),
-                    );
-                  },
-                  
-          //gradient container textfield        
-           child: Container(
-              height: 40,
-              width: double.infinity,
-              padding: EdgeInsets.all(1),
-              decoration: BoxDecoration(
-                 gradient: LinearGradient(
-                  colors: [Colors.blue, Colors.green, Colors.amber, Colors.pink],
-                 ),
-                 borderRadius: BorderRadius.circular(10),
-              ),
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(8),
-               ),
-               child: Text("Try \"Suggestions for vegetarian meals\"",
-                 style: GoogleFonts.nunitoSans(
-                 textStyle: TextStyle(
-                 fontWeight: FontWeight.w400,
-                 color: ColorConstants.grey,
-                fontSize: 18,
-                overflow: TextOverflow.ellipsis
+              
+              ]),
+                    //
+                    SizedBox(height: 90),
+                    Lottie.asset(
+                      "assets/images/carrotj.json",
+                      height: 90,
+                      width: 90,
+                    ),
+                    SizedBox(height: 6),
+                    Container(
+                      height: 20,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: ColorConstants.darkblue,
+                        borderRadius: BorderRadius.circular(2),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "BETA",
+                          style: TextStyle(
+                            color: ColorConstants.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "Hi! I'm TasteBud, your \nnew recipe finder",
+                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: 10),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => TastebudScreen()),
+                        );
+                      },
+                      
+              //gradient container textfield        
+               child: Container(
+                  height: 40,
+                  width: double.infinity,
+                  padding: EdgeInsets.all(1),
+                  decoration: BoxDecoration(
+                     gradient: LinearGradient(
+                      colors: [Colors.blue, Colors.green, Colors.amber, Colors.pink],
+                     ),
+                     borderRadius: BorderRadius.circular(10),
                   ),
-                  
+                  child: Container(
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8),
+                   ),
+                   child: Text("Try \"Suggestions for vegetarian meals\"",
+                     style: GoogleFonts.nunitoSans(
+                     textStyle: TextStyle(
+                     fontWeight: FontWeight.w400,
+                     color: ColorConstants.grey,
+                    fontSize: 18,
+                    overflow: TextOverflow.ellipsis
+                      ),
+                      
+                    ),
+                   ),
+                 ),
                 ),
-               ),
-             ),
-            ),
-          ),
-           SizedBox(height: 10),
-                // Horizontal Scroll for Search Queries
-           SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: List.generate(
-                      texts.length,
-                      (index) => InkWell(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => TastebudScreen()),
-                          );
-                        },
-                        //search queries sugestion
-                        child: Container(
-                         height: 50,
-                         width: 250,
-                         padding: EdgeInsets.only(left: 10),
-                         margin: EdgeInsets.symmetric(horizontal: 6),
-                          decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Row(
-                             mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Icon(Icons.auto_awesome),
-                                SizedBox(width: 15),
-                                Text(
-                                  texts[index],
-                                  style: GoogleFonts.nunitoSans(
-                                   textStyle: TextStyle(fontSize: 18),
-                                  ),
-                                maxLines: 2,
-                                overflow: TextOverflow.visible,
+              ),
+               SizedBox(height: 10),
+                    // Horizontal Scroll for Search Queries
+               SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(
+                          texts.length,
+                          (index) => InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => TastebudScreen()),
+                              );
+                            },
+                            //search queries sugestion
+                            child: Container(
+                             height: 50,
+                             width: 250,
+                             padding: EdgeInsets.only(left: 10),
+                             margin: EdgeInsets.symmetric(horizontal: 6),
+                              decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
                                 ),
-                              ],
+                                child: Row(
+                                 mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Icon(Icons.auto_awesome),
+                                    SizedBox(width: 15),
+                                    Text(
+                                      texts[index],
+                                      style: GoogleFonts.nunitoSans(
+                                       textStyle: TextStyle(fontSize: 18),
+                                      ),
+                                    maxLines: 2,
+                                    overflow: TextOverflow.visible,
+                                    ),
+                                  ],
+                               ),
+                             ),
                            ),
                          ),
                        ),
-                     ),
-                   ),
-                ),],
-            ),
-          ),
-        );
+                    ),],
+                ),
+              ),
+            );
   }
 
 }

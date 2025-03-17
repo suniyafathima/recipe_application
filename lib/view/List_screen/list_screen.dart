@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_application/dummydb.dart';
-import 'package:recipe_application/model/ingredient_mode;/ingredient_model.dart'; 
 import 'package:recipe_application/utils/constants/color_constants.dart';
 
 class ListScreen extends StatefulWidget {
@@ -32,7 +31,55 @@ class _ListScreenState extends State<ListScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(  // Ensure body is scrollable
+      body:
+      Dummydb.ingredients.isEmpty? 
+      Center(child: Column(
+        children: [
+          SizedBox(height: 100),
+            Image.asset(
+               "assets/images/list.jpg",
+               width: 200,
+               height: 100,
+             ),
+             Text(
+               "Your shopping list is empty",
+               style: TextStyle(
+                 fontSize: 25,
+                 fontWeight: FontWeight.bold,
+               ),
+             ),
+             SizedBox(
+              height: 100,
+              width: 250,
+               child: Text("Select the ingredients you need from a recipe or add your own",
+               style:TextStyle(fontSize: 20),
+               maxLines: 3,
+               overflow: TextOverflow.visible,),
+             ),
+             
+             SizedBox(height: 20), 
+             
+             // Search Button
+             Container(
+               height: 50,
+               width: 180,
+               decoration: BoxDecoration(
+                 color: ColorConstants.darkblue,
+                 borderRadius: BorderRadius.circular(10),
+               ),
+               child: TextButton(
+                 onPressed: () {},
+                 child: Text(
+                   "Search Recipes",
+                   style: TextStyle(color: Colors.white,
+                   fontSize: 20 ),
+                 ),
+               ),
+             ),
+        ],
+      ),)
+      
+      :SingleChildScrollView(  
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
@@ -91,7 +138,7 @@ class _ListScreenState extends State<ListScreen> {
                     children: [
                       ListTile(
                        
-                        leading: Transform.scale( //checbox size
+                        leading: Transform.scale( 
                           scale: 1.5,
                           child: Checkbox( 
                             activeColor: ColorConstants.darkblue,
@@ -116,7 +163,7 @@ class _ListScreenState extends State<ListScreen> {
 
                    Divider(thickness: 1,color: ColorConstants.lightGrey1,),
                   SizedBox(height: 5),
-                  // ExpansionTile for "Chicken Zuccini"
+                  
                   ExpansionTile(
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
                     title: Text(
@@ -124,14 +171,14 @@ class _ListScreenState extends State<ListScreen> {
                       style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                     ),
                     children: [
-                      // ListView.builder to show dynamic ingredients
+                
                       ListView.builder(
-                        shrinkWrap: true,  // ListView takes only required space
-                        physics: NeverScrollableScrollPhysics(),  // Prevent scrolling within the ListView
+                        shrinkWrap: true, 
+                        physics: NeverScrollableScrollPhysics(),
                         itemCount: Dummydb.ingredients.length, 
                         itemBuilder: (context, index) {
                           return ListTile(
-                            leading: Transform.scale(
+                            leading: Transform.scale( //increase textbox size
                               scale: 1.5,
                               child: Checkbox( 
                                 activeColor: ColorConstants.darkblue,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_application/global_widget/reusable_container.dart';
 import 'package:recipe_application/global_widget/reusable_containerc.dart';
-import 'package:recipe_application/search_results/search_results.dart';
+import 'package:recipe_application/view/search_results/search_results.dart';
 import 'package:recipe_application/utils/constants/color_constants.dart';
 
 class SearchScreen extends StatefulWidget {

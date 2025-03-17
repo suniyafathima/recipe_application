@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_application/search_results/tabs/collection_tab.dart';
-import 'package:recipe_application/search_results/tabs/recipe_tab.dart';
+import 'package:recipe_application/view/search_results/tabs/collection_tab.dart';
+import 'package:recipe_application/view/search_results/tabs/recipe_tab.dart';
 import 'package:recipe_application/utils/constants/color_constants.dart';
 
 class SearchResults extends StatefulWidget {

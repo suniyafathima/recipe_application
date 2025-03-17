@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_application/global_widget/reusable_button.dart';
 import 'package:recipe_application/utils/constants/color_constants.dart';
-import 'package:recipe_application/view/bottom_navbar/bottom_navbar.dart';
-import 'package:recipe_application/view/home_screen/home_screen.dart';
+
+
 
 class RecipeDetails extends StatefulWidget {
   const RecipeDetails({super.key});
@@ -37,8 +37,7 @@ bool clickedStar=false;
          leadingWidth: 100,
        leading: InkWell(
             onTap: () {
-              Navigator.push(context, 
-              MaterialPageRoute(builder: (index)=>BottomNavbar()));
+              Navigator.pop(context);
             },
          child: Row(
           children: [
