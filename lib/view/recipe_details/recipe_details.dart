@@ -251,9 +251,6 @@ bool clickedStar=false;
                 width: double.infinity,
                 decoration: BoxDecoration(color: ColorConstants.lightGrey1),
                 
-                child: TextButton(onPressed: (){
-                  //
-                }, 
                 child:Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -295,7 +292,7 @@ bool clickedStar=false;
                     
                   ],
                 )),
-              ),      
+                   
              ]) ]),
       )));
   }

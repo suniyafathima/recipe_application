@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_application/global_widget/reusable_button.dart';
 import 'package:recipe_application/utils/constants/color_constants.dart';
+import 'package:recipe_application/view/bottom_navbar/bottom_navbar.dart';
 
 
 class LoginTab extends StatefulWidget {
@@ -133,7 +134,7 @@ TextEditingController passwordController=TextEditingController();
              
                ReusableButton(buttonPressed: ()  {
             
-                   Navigator.pop(context);
+                   Navigator.pushReplacement(context,MaterialPageRoute(builder: (index)=>BottomNavbar()));
               }, 
               textname: "Log In",
               backgroundColor: ColorConstants.darkblue,

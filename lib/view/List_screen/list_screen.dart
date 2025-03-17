@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_application/dummydb.dart';
 import 'package:recipe_application/utils/constants/color_constants.dart';
+import 'package:recipe_application/view/search_screen/search_screen.dart';
 
 class ListScreen extends StatefulWidget {
   const ListScreen({super.key});
@@ -68,7 +69,9 @@ class _ListScreenState extends State<ListScreen> {
                  borderRadius: BorderRadius.circular(10),
                ),
                child: TextButton(
-                 onPressed: () {},
+                 onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchScreen()));
+                 },
                  child: Text(
                    "Search Recipes",
                    style: TextStyle(color: Colors.white,

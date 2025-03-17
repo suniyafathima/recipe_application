@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_application/model/home_screen_models/recipeitem_model.dart';
 import 'package:recipe_application/utils/constants/color_constants.dart';
+import 'package:recipe_application/view/bottom_navbar/bottom_navbar.dart';
+import 'package:recipe_application/view/registration_screen/registration_screen.dart';
+import 'package:recipe_application/view/search_screen/search_screen.dart';
 
 class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({super.key});
@@ -45,7 +48,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
          ),
           actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>BottomNavbar()));
+            },
             child: Text(
               "Edit",
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: ColorConstants.darkblue),
@@ -100,7 +105,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                             overflow: TextOverflow.visible,),
                           ),
                           SizedBox(height: 16),
-                           TextButton(onPressed: (){}, child: Text("Sign up for a free account",
+                           TextButton(onPressed: (){
+                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>RegistrationScreen()));
+                           }, child: Text("Sign up for a free account",
                               style: TextStyle(color: ColorConstants.darkblue,
                               fontWeight: FontWeight.bold,
                               fontSize: 20),))
@@ -142,7 +149,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                  borderRadius: BorderRadius.circular(10),
                ),
                child: TextButton(
-                 onPressed: () {},
+                 onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchScreen()));///
+                 },
                  child: Text(
                    "Search Recipes",
                    style: TextStyle(color: Colors.white,
